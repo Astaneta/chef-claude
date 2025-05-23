@@ -5,11 +5,10 @@ import Recipe from "../components/Recipe";
 import { useState } from 'react';
 
 export default function Main() {
-    const [ingredients, setIngredients] = useState(
-         ["all the main spices", "pasta", "ground beef", "tomato paste"]
-        );
+    const [ingredients, setIngredients] = useState([]);
 
-    const [recipeShow, setRecipeShow] = useState(false);    
+    const [recipeShow, setRecipeShow] = useState(false); 
+    const [recipe, setRecipe] = useState('');   
 
     const addIngredient = (newIngredient) => {
         if (newIngredient) {
@@ -23,8 +22,9 @@ export default function Main() {
         }
     };
 
-    const getRecipe = function () {
+    const getRecipe = function (recipe) {
         setRecipeShow(true);
+        setRecipe(recipe);
     }
 
     return (
@@ -37,11 +37,11 @@ export default function Main() {
                 }
                 {
                     ingredients.length >= 3 && 
-                    <GetRecipe getRecipe={getRecipe} />
+                    <GetRecipe getRecipe={getRecipe} ingredients={ingredients} />
                 }
                 {
                     recipeShow &&
-                    <Recipe />
+                    <Recipe recipe={recipe} />
                 }
             </section>
         </main>
