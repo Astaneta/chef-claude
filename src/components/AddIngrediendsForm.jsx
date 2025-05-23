@@ -1,15 +1,12 @@
 export default function AddIngredientsForm(props) {
 
-  const handleOnSubmit = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+  const handleSubmit = (formData) => {
     const newIngredient = formData.get("ingredientInput");
     props.onsubmit(newIngredient);
-    event.currentTarget.reset();
   }
 
   return (
-      <form className='add-ingredients-form' onSubmit={handleOnSubmit}>
+      <form className='add-ingredients-form' action={handleSubmit}>
         <input 
           type="text"
           placeholder="e.g. origano" 

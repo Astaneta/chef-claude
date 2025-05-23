@@ -1,8 +1,10 @@
 import AddIngredientsForm from "../components/AddIngrediendsForm";
+import IngredientsList from "../components/IngredientsList";
+import GetRecipe from "../components/GetRecipe";
 import { useState } from 'react';
 
 export default function Main() {
-    const [ingredients, setIngredients] = useState(["Chicken", "Oregano", "Tomatoes"]);
+    const [ingredients, setIngredients] = useState([]);
 
     const addIngredient = (newIngredient) => {
         if (newIngredient) {
@@ -11,6 +13,7 @@ export default function Main() {
             alert("This ingredient is already in the list");
             return;
         }
+        
         setIngredients(prevIngredients => [...prevIngredients, trimmedIngredient]);
         }
     };
@@ -18,9 +21,16 @@ export default function Main() {
     return (
         <main>
             <AddIngredientsForm onsubmit={addIngredient} />
-            <ul>
-            {ingredients.map((ingr) => <li key={ingr}>{ingr}</li>)}
-      </ul>
+            <section>
+                {
+                    ingredients.length > 0 && 
+                    <IngredientsList ingredients={ingredients}/>
+                }
+                {
+                    ingredients.length >= 3 && 
+                    <GetRecipe />
+                }
+            </section>
         </main>
     )
 }
