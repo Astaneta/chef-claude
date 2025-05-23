@@ -1,4 +1,4 @@
- export default async function getRecipeFromChefClaude(ingredientsArr) {
+export async function getRecipeFromChefClaude(ingredientsArr) {
 const response = await fetch("/api/getRecipe", {
     method: "POST",
     headers: {
