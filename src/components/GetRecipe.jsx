@@ -3,7 +3,7 @@ import { getRecipeFromChefClaude } from '../ai'
 export default function GetRecipe(props) {
 
     async function fetchRecipe() {
-        const recipe = getRecipeFromChefClaude(props.ingredients);
+        const recipe = await getRecipeFromChefClaude(props.ingredients);
         props.getRecipe(recipe);
     }
 

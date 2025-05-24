@@ -5,7 +5,7 @@ You are an assistant that receives a list of ingredients that a user has and sug
 `;
 
 const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY, // variabile privata sul server
+  apiKey: process.env.VITE_ANTHROPIC_API_KEY
 });
 
 export default async function handler(req, res) {
@@ -17,6 +17,7 @@ export default async function handler(req, res) {
     }
 
     const ingredientsString = ingredients.join(", ");
+
 
     const msg = await anthropic.messages.create({
       model: "claude-3-haiku-20240307",

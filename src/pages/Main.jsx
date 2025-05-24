@@ -6,8 +6,6 @@ import { useState } from 'react';
 
 export default function Main() {
     const [ingredients, setIngredients] = useState([]);
-
-    const [recipeShow, setRecipeShow] = useState(false); 
     const [recipe, setRecipe] = useState('');   
 
     const addIngredient = (newIngredient) => {
@@ -23,7 +21,6 @@ export default function Main() {
     };
 
     const getRecipe = function (recipe) {
-        setRecipeShow(true);
         setRecipe(recipe);
     }
 
@@ -40,7 +37,7 @@ export default function Main() {
                     <GetRecipe getRecipe={getRecipe} ingredients={ingredients} />
                 }
                 {
-                    recipeShow &&
+                    recipe &&
                     <Recipe recipe={recipe} />
                 }
             </section>
