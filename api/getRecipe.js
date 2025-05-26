@@ -5,6 +5,7 @@ You are an assistant that receives a list of ingredients that a user has and sug
 `;
 
 const anthropic = new Anthropic({
+  // eslint-disable-next-line no-undef
   apiKey: process.env.VITE_ANTHROPIC_API_KEY
 });
 
